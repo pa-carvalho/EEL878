@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página com Barra Lateral Fixa</title>
+    <style>
+        /* barra lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 12.5%;
+            height: 100%;
+            background-color: blue;
+            color: white;
+            padding: 20px;
+        }
+
+        /* links na barra lateral */
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 10px;
+            padding-top: 15%;
+        }
+
+        /* conteúdo */
+        .content {
+            margin-left: 12.5%;
+            padding: 5rem;
+        }
+        
+        /* conteúdos internos */
+        .conteudo-interno {
+            display: none;
+        }
+    </style>
+    <script>
+        // Função para exibir o conteúdo da página interna selecionada
+        function exibirConteudo(id) {
+            // Oculta todo o conteúdo
+            var conteudos = document.getElementsByClassName("conteudo-interno");
+            for (var i = 0; i < conteudos.length; i++) {
+                conteudos[i].style.display = "none";
+            }
+
+            // Exibe o conteúdo da página interna selecionada
+            var conteudo = document.getElementById(id);
+            if (conteudo) {
+                conteudo.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>VOIP</h1>
+        <a href="javascript:void(0);" onclick="exibirConteudo('conteudo1');">INTRODUÇÃO</a>
+        <a href="javascript:void(0);" onclick="exibirConteudo('conteudo2');">FUNCIONAMENTO</a>
+        <a href="javascript:void(0);" onclick="exibirConteudo('conteudo3');">ARQUITETURA</a>
+        <a href="javascript:void(0);" onclick="exibirConteudo('conteudo4');">PROTOCOLOS</a>
+        <a href="javascript:void(0);" onclick="exibirConteudo('conteudo5');">USO E APLICAÇÕES</a>
+    </div>
+    <div class="content">
+        <div id="conteudo1" class="conteudo-interno">
+            <!-- Conteúdo da página introdução -->
+            <h2>INTRODUÇÃO</h2>
+            <p> <h3>1.1</h3>VoIP é a sigla para Voice over Internet Protocol. É uma tecnologia que permite realizar chamadas telefônicas e transmitir dados de voz através do protocolo IP e uma conexão de internet em vez das tradicionais linhas telefônicas analógicas.
+
+                No sistema de VoIP, a voz é digitalizada e transmitida em pacotes de dados pela rede de internet, sendo convertida novamente em sinal de áudio no destino final. Essa tecnologia utiliza a infraestrutura de rede existente, como a internet banda larga, para realizar chamadas de voz.
+                
+                <h3>1.2</h3>Existem várias vantagens no uso do VoIP. Entre elas estão a redução de custos, pois as chamadas entre usuários do VoIP geralmente são gratuitas ou têm custos mais baixos em comparação com as chamadas tradicionais; a flexibilidade, pois é possível fazer chamadas a partir de qualquer lugar com acesso à internet; a possibilidade de integração com outros serviços de comunicação, como videoconferências e mensagens instantâneas; e recursos adicionais, como redirecionamento de chamadas, correio de voz e identificação de chamadas.
+                
+                Economia de custos: O VoIP é conhecido por oferecer uma alternativa mais econômica em comparação com as chamadas telefônicas tradicionais (PSTN). Diferente da rede PSTN, que requer uma rede telefônica dedicada, o VoIP utiliza a infraestrutura de rede existente, como a internet banda larga, as chamadas VoIP podem ser feitas a um custo significativamente menor, principalmente em chamadas de longa distância e internacionais.
+                
+                Integração de serviços: O VoIP permite a integração de serviços de comunicação em uma única plataforma. Além de chamadas de voz, as redes VoIP podem oferecer recursos como videoconferência, mensagens instantâneas, compartilhamento de arquivos e colaboração em tempo real. Isso proporciona uma comunicação mais eficiente e simplificada, aumentando a produtividade e a colaboração dentro de uma organização.
+                
+                Flexibilidade e mobilidade: Com o VoIP, é possível realizar chamadas de voz a partir de qualquer lugar com acesso à internet. Isso oferece flexibilidade e mobilidade para os usuários, permitindo que eles se comuniquem de forma eficaz mesmo quando estão em movimento. Além disso, é possível redirecionar chamadas para outros dispositivos, como celulares ou softphones em computadores, garantindo que as chamadas sejam atendidas independentemente da localização física.
+                
+                Recursos avançados: O VoIP oferece uma ampla gama de recursos avançados, como redirecionamento de chamadas, correio de voz, identificação de chamadas, chamadas em espera, conferências telefônicas e muito mais. Esses recursos aprimoram a experiência de comunicação e fornecem maior controle e personalização nas chamadas.
+                </p>
+        </div>
+        <div id="conteudo2" class="conteudo-interno">
+            <!-- Conteúdo da página funcionamento do voip -->
+            <h2>FUNCIONAMENTO DO VOIP</h2>
+            <p><h3>2.1 e 2.2</h3>Amostragem: A primeira etapa é amostrar o sinal de voz analógico em intervalos regulares. A taxa de amostragem padrão para telefonia é de 8.000 vezes por segundo (8 kHz). Em cada intervalo, uma medida é feita para capturar a intensidade do sinal de voz.
+
+                Quantização: A intensidade medida em cada amostra é então representada digitalmente por um número. Essa etapa é chamada de quantização, em que os valores são arredondados para o valor mais próximo em uma escala predefinida. Quanto maior a resolução da quantização, melhor a qualidade do áudio, mas também requer mais largura de banda para transmitir os pacotes de dados resultantes.
+                
+                Compactação: O próximo passo é aplicar técnicas de compactação para reduzir o tamanho dos dados de voz. Existem vários algoritmos de compactação de voz, como o G.711 ou o G.729, que eliminam redundâncias e informações desnecessárias do sinal de voz. Esses algoritmos comprimem o áudio para minimizar a quantidade de dados a serem transmitidos pela rede.
+                
+                Encapsulamento em pacotes: Após a digitalização e compactação, os dados de voz são encapsulados em pacotes de dados. Cada pacote contém um cabeçalho e uma carga útil. O cabeçalho inclui informações como endereço IP de origem e destino, sequência de pacotes, informações de controle e outros detalhes necessários para encaminhar e processar os pacotes corretamente.
+                
+                Roteamento: Os pacotes de voz encapsulados são roteados pela rede de dados, passando por roteadores e switches. O roteamento é feito com base nas informações contidas no cabeçalho do pacote, que contém os endereços IP de origem e destino.
+                
+                Latência e Jitter: Durante a transmissão, os pacotes de voz podem enfrentar latência (atraso) e jitter (variação no atraso). A latência pode ocorrer devido ao processamento nos roteadores e switches, bem como ao congestionamento na rede. O jitter pode ocorrer quando os pacotes de voz chegam em momentos diferentes devido a variações no tempo de propagação pela rede. Esses efeitos podem afetar a qualidade da chamada se não forem gerenciados adequadamente.
+                
+                Recepção e desencapsulamento: No destino, os pacotes de voz são recebidos e desencapsulados. O cabeçalho do pacote é analisado para extrair os dados de voz compactados.
+                
+                Descompactação e decodificação: No destino, os pacotes são descompactados e decodificados para reverter o processo de compactação e quantização. A carga útil é reconstruída em forma de sinal de voz digital.
+                
+                Conversão para sinal analógico: Finalmente, o sinal de voz digital é convertido em sinal analógico, utilizando um conversor digital-analógico (CDA). Isso permite que o áudio seja reproduzido em alto-falantes ou fones de ouvido para que as pessoas possam ouvir a voz transmitida.
+                
+                <h3>2.3</h3>A QoS (Quality of Service) é essencial para garantir a qualidade das chamadas VoIP, transmitidas pela internet. É necessário ter uma conexão de banda larga de alta velocidade e estabelecer uma política de priorização do tráfego na rede. A QoS oferece recomendações e padrões para priorizar o tráfego, assegurando chamadas VoIP sem interrupções. Com base em valores DSCP, é possível criar políticas de QoS que definem a prioridade do tráfego de rede. A QoS permite estabelecer padrões específicos para a rede, minimizando problemas e proporcionando chamadas claras e estáveis. (DSCP (Differentiated Services Code Point) é um campo presente no cabeçalho do pacote IP que define a prioridade de tratamento de um pacote de dados em uma rede)
+                </p>
+        </div>
+        <div id="conteudo3" class="conteudo-interno">
+            <!-- Conteúdo da página arquitetura -->
+            <h2>ARQUITETURA</h2>
+            <p>3. Na telefonia convencional, a rede segue uma estrutura hierárquica, com grandes centrais telefônicas interligadas que possuem o controle centralizado. Os terminais são simples e seu endereçamento é baseado na geografia da área de cobertura da rede.
+
+                Por outro lado, na telefonia IP, a rede é plana e não hierárquica. Ela é especializada no roteamento e transporte de pacotes de dados e oferece diversos tipos de serviços. Os terminais são inteligentes, não dependem de sua localização geográfica para endereçamento, e o processamento e realização das chamadas ocorrem em diferentes equipamentos distribuídos pela rede.
+                A arquitetura típica de uma rede de telefonia IP é composta pelos seguintes elementos:
+                <br>
+                <img src="./assets/image1.jpeg" alt="">
+                <br>
+                
+                Rede IP: É a rede de dados que utiliza os protocolos TCP/IP para transportar e rotear os pacotes de dados entre os dispositivos conectados. Pode ser dividida em um ou mais segmentos de rede, dependendo do seu tamanho.
+                
+                Sistema de Telefonia Fixa Comutada (STFC): É o sistema convencional de comunicação de voz que interliga residências e empresas em âmbito nacional e internacional. Também inclui o sistema de telefonia móvel atual.
+                
+                PABX: É o equipamento utilizado em empresas para fornecer serviços privados de voz. Geralmente, são sistemas digitais que se conectam ao STFC ou sistemas de telefonia móvel para realizar chamadas externas.
+                
+                Terminal Telefônico Convencional (Tel): É o telefone tradicional utilizado em residências e empresas. Em sistemas digitais mais modernos, os telefones podem ser digitais para oferecer funcionalidades adicionais além da comunicação de voz.
+                
+                Terminal Telefônico IP (Tel IP): É o telefone projetado para a comunicação de voz em redes IP. Possui todas as funcionalidades e protocolos necessários para suportar a comunicação bidirecional de voz em tempo real e a sinalização de chamadas. As funcionalidades adicionais integradas dependem do objetivo e custo do terminal.
+                
+                Terminal Multimídia (TM): São computadores preparados para a comunicação de voz em redes IP. Assim como os telefones IP, possuem todas as funcionalidades e protocolos necessários para suportar a comunicação bidirecional de voz em tempo real e a sinalização de chamadas. Podem ser utilizados em aplicações mais complexas, como call centers e estações de conferência multimídia.
+                
+                Gateway (GW): É o equipamento responsável pela interoperabilidade entre a rede IP e o STFC ou sistemas de telefonia móvel. Realiza a conversão de mídia em tempo real, convertendo voz analógica em voz digital comprimida, além de converter a sinalização para as chamadas telefônicas.
+                
+                Gateway Controller (GC): É o equipamento responsável pelo controle das chamadas em andamento realizadas pelos gateways. Também conhecido como Call Agent, utiliza e gera informações de sinalização e comanda os gateways para iniciar, acompanhar e encerrar chamadas entre terminais distintos.
+                
+                Multipoint Control Unit (MCU): É o equipamento responsável pelos serviços de conferência entre três ou mais terminais. É composto por um Controlador Multiponto (MC), responsável pela sinalização das chamadas, e por um Processador Multiponto (MP), responsável pelo processamento dos pacotes de dados dos sinais de voz dos terminais envolvidos na conferência.
+                
+                Gatekeeper (GK): É o equipamento responsável pelo gerenciamento de um conjunto de equipamentos dedicados à telefonia IP, incluindo telefones IP, computadores, gateways, controladores e unidades de conferência. Suas principais funções incluem a tradução de endereçamento dos dispositivos, controle de acesso à rede dentro de uma determinada zona e gerenciamento de banda.
+                
+                Zona: É um conjunto de terminais, gateways e unidades de conferência gerenciados por um único gatekeeper. Fisicamente, uma zona pode ser composta por um ou mais segmentos de rede interligados por roteadores ou dispositivos semelhantes. Em comparação com os sistemas telefônicos convencionais, uma zona corresponde a uma área com um determinado código de localidade, como uma cidade ou um grupo de cidades, dependendo do tamanho e do número de terminais.
+                </p>
+        </div>
+        <div id="conteudo4" class="conteudo-interno">
+            <!-- Conteúdo da página protocolos utilizados no voip -->
+            <h2>PROTOCOLOS UTILIZADOS NO VOIP</h2>
+            <p><h3>4</h3>Existem três tipos de protocolos usados no serviço de voz sobre IP (VoIP): protocolos de sinalização por controle de chamada, protocolos de sinalização por controle de gateway e protocolos de transporte de voz.
+                <h3>4.1</h3>No primeiro tipo, temos o H.323, que é mais antigo e complexo, utilizado por telefones IP, adaptadores IP e gateways para controle de chamadas. O SIP(Session Initiation Protocol) é um protocolo mais moderno e menos complexo, amplamente adotado atualmente, que também permite o estabelecimento de serviços adicionais, como conferência e identificação de chamadas.
+                <h3>4.2</h3>No segundo tipo, temos o MGCP(Media Gateway Control Protocol), utilizado por controladores de gateways para controle de chamadas, e o MEGACO, uma alternativa ao MGCP que também se adequa a diferentes sistemas de telefonia.
+                <h3>4.3</h3>No terceiro tipo, temos dois importantes protocolos. O RTP(Real-Time Transport Protocol) é responsável pelo transporte de voz em tempo real entre gateways e computadores, podendo ser usado em transmissões de um para muitos (multicast) ou de um para um (unicast). O RTCP(Real-Time Transport Control Protocol) controla o transporte de voz realizado pelo RTP nos sistemas VoIP.
+                <br>
+                <img src="./assets/image4-3.jpeg" alt="">
+                <br>
+                Esses protocolos passam por três etapas: estabelecimento da chamada, acompanhamento da chamada e finalização da chamada. Durante a chamada, são criados canais virtuais de controle e monitorados eventos relevantes, como perda de conexão. Ao final da chamada, os terminais e equipamentos envolvidos são liberados.
+                
+                O processamento de voz ocorre em dois processos: controle do transporte de voz, onde os terminais definem o mecanismo de transporte e criam canais virtuais de controle e mídia, e transporte de mídia, onde a voz é transportada bidirecionalmente pelos canais virtuais estabelecidos.
+                
+                Em resumo, esses protocolos são utilizados para estabelecer, controlar e transportar chamadas VoIP, passando por diferentes etapas e processos para garantir uma comunicação eficiente.
+                </p>
+        </div>
+        <div id="conteudo5" class="conteudo-interno">
+            <!-- Conteúdo da página uso e aplicações do voip -->
+            <h2>USO E APLICAÇÕES DO VOIP</h2>
+            <p><h3>6</h3>Os computadores podem prover dos recursos disponíveis para a comunicação em VoIP. A aplicação da VoIP em computadores é a mais simples e de fácil utilização. O computador precisa de:
+                um headset (fone de ouvido com microfone acoplado)
+                uma webcam (para as imagens de vídeo)
+                conexão com a Internet de velocidade razoável
+                instalação do softphone
+                O softphone é o programa que contém as funcionalidades para a realização de ligações telefônicas entre os computadores. Ele usa mecanismos que capturam e reproduzem o áudio, de forma a transmitir e receber as amostras da voz digitalizada nos pacotes IP.
+                É possível realizar o download de diversos softphones gratuitos pela Internet. Mas há a necessidade da utilização de uma provedora de serviços de VoIP, possibilitando assim a ligação telefônica gratuita entre usuários da mesma provedora.
+                Alguns recursos adicionais que os softphones podem oferecer são:
+                Incluir compressão de dados, cancelamento de eco e redução de ruídos;
+                Suportar uma visualização de identificação da chamada;
+                Oferecer recursos de viva-voz;
+                Oferecer recursos de conferência;
+                Suportar uma transmissão por vídeo;
+                Incluir um catálogo de endereços para discagem rápida;
+                Suportar transferência de ligações;
+                Permitir gravação das ligações;
+                Um programa VoIP usado alguns anos atrás e atualmente que permite a comunicação de voz na Internet com chamadas telefônicas é o Skype.
+                O programa utiliza uma rede distribuída ponto a ponto (P2P), que foi desenvolvida inicialmente para aplicações de compartilhamento de arquivos, dividindo as atividades computacionais e as distribuindo aos computadores dos usuários para fazer o processamento destas atividades.
+                Com o Skype, o usuário pode efetuar uma ligação telefônica para qualquer outro computador do mundo que também tenha o Skype instalado, sem nenhum custo. A realização das ligações do computador para o telefone fixo também é possível, sendo esses serviços chamados de SkypeOut e SkypeIN. Nesses serviços há uma tarifa pela ligação, porém de baixíssimo custo. Alguns dos recursos adicionais do aplicativo são ativados pela compra de créditos.
+                Dentre esses recursos que o Skype oferece estão:
+                Identificação de chamada: quando uma ligação telefônica é feita pelo Skype, ela pode ser identificada por telefones fixos ou celulares do destino.
+                Envio de arquivos: o aplicativo permite a transferência de arquivos, independente do tamanho.
+                Encaminhamento de chamadas: as chamadas recebidas pelo Skype podem ser encaminhadas para um telefone fixo ou celular.
+                Transferência de chamadas: semelhante ao recurso de encaminhamento, as chamadas que foram recebidas ou que ainda estão em andamento, podem ser transferidas para telefone fixo ou celular.
+                Correio de voz: gravação e encaminhamento de mensagens das ligações não atendidas. A mensagem de voz pode ser convertida para mensagem de texto.
+                Acesso remoto: a tela do computador de origem pode ser exibida para o computador de destino ou vice-versa por meio do Skype.
+                Conferência: comunicação telefônica com vários participantes.
+                Ligações telefônicas com vídeo e videoconferência: o aplicativo permite a comunicação exibindo a imagem entre origem e destino com uso de uma webcam.
+                Suporte a Wi-Fi: o aplicativo através de um notebook se conecta a hotsposts sendo o acesso pago por minuto.
+                Envio de SMS: o Skype permite o envio de mensagens de texto para celulares.
+                Devido a sua implementação proprietária, o Skype não utiliza os protocolos padronizados H.323, SIP, RTP e codecs. Apesar de transportar voz sobre uma rede IP, como a Internet, ele pode não ser considerado uma aplicação típica de VoIP. Ele pode ser classificado como uma aplicação VoIP numa rede P2P, com funcionamento diferenciado em relação aos outros softphones.
+                
+                
+                <h3>6.3</h3>A telefonia móvel tem passado por uma transformação significativa com o advento da tecnologia VoIP (Voz sobre IP) e o surgimento de aplicativos de comunicação. Essas inovações revolucionaram a maneira como nos conectamos e nos comunicamos usando dispositivos móveis.
+                
+                O VoIP móvel permite realizar chamadas de voz utilizando a infraestrutura de rede de dados, como redes Wi-Fi ou conexões de dados móveis. Em vez de depender exclusivamente das redes de telefonia convencional, as chamadas são roteadas pela Internet, resultando em custos mais baixos e uma maior flexibilidade de comunicação.
+                
+                Existem diversos aplicativos de comunicação que oferecem serviços de VoIP móvel, sendo os mais populares o Skype, o WhatsApp, o FaceTime, o Viber, entre outros. Esses aplicativos permitem fazer chamadas de voz gratuitas ou de baixo custo para outros usuários do aplicativo, tanto em âmbito nacional quanto internacional.
+                
+                Contudo, é importante ressaltar que o uso do VoIP móvel depende da qualidade da conexão de Internet. Uma conexão instável ou de baixa velocidade pode comprometer a qualidade das chamadas, resultando em ruídos, atrasos ou interrupções. Portanto, é fundamental estar ciente das limitações da conexão de dados móveis ou utilizar uma rede Wi-Fi confiável para garantir uma melhor experiência de comunicação. Como já havíamos explicado na parte de  QoS.
+                </p>
+        </div>
+    </div>
+</body>
+</html>
